@@ -1,28 +1,46 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="pug">
+  q-layout(view="lHh Lpr lFf")
+    q-header(elevated)
+      q-toolbar.bg-primary
+        q-btn(
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+          icon="menu"
+        )
+      div.q-px-lg.q-pt-xl.q-mb-md
+        div.text-h3 Todo
+        div.text-subtitle1 Monday 20 January
+
+    q-drawer(
+      v-model="leftDrawerOpen"
+      show-if-above
+      bordered
+      content-class="bg-grey-2"
+    )
+    q-page-container
+      todo-list
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoList from './components/TodoList.vue'
 
 export default {
-  name: 'app',
+  name: 'LayoutDefault',
+
   components: {
-    HelloWorld
+    TodoList
+  },
+
+  data () {
+    return {
+      leftDrawerOpen: false
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
